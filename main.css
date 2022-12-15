@@ -65,6 +65,11 @@ form button {
     font-size: 20px;
 }
 
+form button a{
+    text-decoration: none;
+    color: #fff;
+}
+
 form button:hover {
     background: #252525;
 }
