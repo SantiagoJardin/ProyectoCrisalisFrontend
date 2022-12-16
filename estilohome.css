@@ -8,14 +8,15 @@ body{
     padding: 0;
     width: 100%;
     max-width: 1300px;
-    background: black;
+    background: azure;
     margin: auto ;
     display: flex;
+    border-radius: 5px;
 }
 
 .menu li a{
     text-decoration: none;
-    color: white;
+    color: #252525;
     padding: 20px;
     display: block;
 }
@@ -35,15 +36,20 @@ body{
 
 .producto-tabla {
     text-align: left;
-    max-width: 1100px;
+    max-width: 1300px;
     width: 100%;
     margin: auto;
-    padding-top: 0%;
+    padding: 4px;
     margin-top: 1%;
-    border: 1px solid black;
+    border-radius: 5px;
+    background-color: azure;
     
 }
 
 .producto-tabla tr {
     margin-top: 0%;
+}
+
+.producto-tabla tr:hover {
+    color: #009fa5;
 }

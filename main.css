@@ -19,7 +19,8 @@ form {
   background: rgb(255, 255, 255);
   text-align: center;
   padding: 20px 25px;
-  box-shadow: 0 5px 10px rgb(47, 77, 105);  
+  box-shadow: 0 5px 10px rgb(47, 77, 105);
+  border-radius: 5px;  
 }
 
 form .tittle {
@@ -63,6 +64,7 @@ form button {
     padding: 10px 15px;
     cursor: pointer;
     font-size: 20px;
+    border-radius: 5px;
 }
 
 form button a{
