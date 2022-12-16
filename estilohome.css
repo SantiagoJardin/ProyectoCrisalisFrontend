@@ -1,6 +1,7 @@
 body{
     font-family: sans-serif;
     background: #e8e8e8;
+    background: linear-gradient(90deg, rgba(154,119,255,1) 0%, rgba(2,199,255,1) 100%);
 }
 .menu {
     list-style: none;
@@ -24,25 +25,25 @@ body{
     text-align: center;
 }
 
-.menu > li > a{
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-}
+
 
 .menu li a:hover {
     background: #009fa5;
 }
 
-.menu-vertical { 
-    position: absolute;
-    display: none;
-    list-style: none;
-    width: 200px;
-    background-color: rgb(0, 0, 0 .5);
+
+
+.producto-tabla {
+    text-align: left;
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    padding-top: 0%;
+    margin-top: 1%;
+    border: 1px solid black;
+    
 }
 
-.menu-vertical li:hover {
-    display: block;
+.producto-tabla tr {
+    margin-top: 0%;
 }
