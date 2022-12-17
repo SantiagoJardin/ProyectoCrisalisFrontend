@@ -1,0 +1,55 @@
+body{
+    font-family: sans-serif;
+    background: #e8e8e8;
+    background: linear-gradient(90deg, rgba(154,119,255,1) 0%, rgba(2,199,255,1) 100%);
+}
+.menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1300px;
+    background: azure;
+    margin: auto ;
+    display: flex;
+    border-radius: 5px;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: #252525;
+    padding: 20px;
+    display: block;
+}
+
+.menu li{
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+.menu li a:hover {
+    background: #009fa5;
+}
+
+
+
+.producto-tabla {
+    text-align: left;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    padding: 4px;
+    margin-top: 1%;
+    border-radius: 5px;
+    background-color: azure;
+    
+}
+
+.producto-tabla tr {
+    margin-top: 0%;
+}
+
+.producto-tabla tr:hover {
+    color: #009fa5;
+}
