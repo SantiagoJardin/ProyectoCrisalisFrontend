@@ -1,0 +1,126 @@
+body{
+    font-family: sans-serif;
+    background: #e8e8e8;
+    background: linear-gradient(90deg, rgba(154,119,255,1) 0%, rgba(2,199,255,1) 100%);
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 1300px;
+    background: azure;
+    margin: auto ;
+    display: flex;
+    border-radius: 5px;
+}
+
+.barra-bs {
+    color: #252525;
+    max-width: 1300px;
+    margin: 15px auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.barra-bs button{
+    margin-left: 74%;
+    
+}
+
+.barra-bs .img-add {
+    width: 50px;
+    height: 50px;
+    
+}
+
+.barra-bs label input {
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    color: #252525;
+    border-bottom: #252525;
+    
+}
+
+
+.menu li a{
+    text-decoration: none;
+    color: #252525;
+    padding: 20px;
+    display: block;
+}
+
+.menu li{
+    display: inline-block;
+    text-align: center;
+}
+
+.menu li a:hover {
+    background: #009fa5;
+}
+
+.producto-tabla {
+    text-align: left;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    padding: 4px;
+    margin-top: 1%;
+    border-radius: 5px;
+    background-color: azure;
+    
+}
+
+.producto-tabla tr {
+    margin-top: 0%;
+}
+
+.producto-tabla tr th:hover {
+    color: #009fa5;
+}
+
+.img-btn {
+    width: 20px;
+    height: 20px;
+}
+
+.btn {
+    border: none;
+    background: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #cccccc;
+}
+
+.nuevo-usuario {
+    text-align: left;
+    max-width: 1300px;
+    margin: auto;
+    padding: 1px;
+    border-radius: 5px;
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.nuevo-usuario label{
+    margin-left: 5px;
+    margin-block: 5px;
+    margin-right: 10px;
+    
+}
+
+div.nuevo-usuario{
+    justify-content: center;
+    align-items: center;
+
+}
+
+.botones {
+    margin: 10px;
+}

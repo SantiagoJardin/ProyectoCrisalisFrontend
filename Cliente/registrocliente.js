@@ -1,0 +1,1 @@
+const esEmpresa = document.querySelector("")
