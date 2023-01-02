@@ -124,3 +124,7 @@ div.nuevo-usuario{
 .botones {
     margin: 10px;
 }
+
+.btn.btn-outline-primary {
+    margin-bottom: 15px;
+}

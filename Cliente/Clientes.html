@@ -51,6 +51,25 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <button id="empresaDatos" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEmpresa"  >Empresa</button>
+                    <button id="personaDatos" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPersona"  >Persona fisica</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="guardar" type="submit" class="btn btn-primary">Guardar </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalEmpresa" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                 <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear empresa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <label for="nombre" class="col-form-label">Nombre:</label>
@@ -61,7 +80,7 @@
                             <input id="apellido" type="text" class="form-control" autofocus required>
                         </div>
                         <div class="mb-3">
-                            <label for="identificacion" class="col-form-label">Identificacion:</label>
+                            <label for="identificacion" class="col-form-label">Dni/Cuit:</label>
                             <input id="identificacion" type="text" class="form-control" autofocus required>
                         </div>
                         <div class="mb-3">
@@ -72,13 +91,6 @@
                             <label for="email" class="col-form-label">Email:</label>
                             <input id="email" type="text" class="form-control" autofocus required>
                         </div>
-                        <div id="empresa" class="mb-3">
-                            <label for="empresa" class="col-form-label">Es empresa</label>
-                            <select name="empresa" class="es-empresa">
-                                <option value="no">No</option>
-                                <option value="si">Si</option>
-                            </select>
-                        </div>
                         <div class="mb-3">
                             <label for="razon" class="col-form-label">Razon social</label>
                             <input id="razon" type="text" class="form-control" autofocus>
@@ -87,6 +99,45 @@
                             <label for="fecha" class="col-form-label">Fecha de Inicio:</label>
                             <input id="fecha" type="date" class="form-control" autofocus>
                         </div>                      
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button id="guardar" type="submit" class="btn btn-primary">Guardar </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="modalPersona" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                 <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear persona</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="col-form-label">Nombre:</label>
+                            <input id="nombre" type="text" class="form-control" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="col-form-label">Apellido:</label>
+                            <input id="apellido" type="text" class="form-control" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="identificacion" class="col-form-label">Dni/Cuit:</label>
+                            <input id="identificacion" type="text" class="form-control" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="col-form-label">Direccion:</label>
+                            <input id="direccion" type="text" class="form-control" autofocus required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input id="email" type="text" class="form-control" autofocus required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
