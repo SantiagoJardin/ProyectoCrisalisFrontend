@@ -1,29 +1,22 @@
 const tableBody = document.querySelector("#tbody")
 const tableHead = document.querySelector("#thead")
-const empresa = document.querySelector("#empresa")
 const nombre = document.querySelector("#nombre")
-const identificacion = document.querySelector("#identificacion")
-const apellido = document.querySelector("#apellido")
-const direccion = document.querySelector("#direccion")
-const email = document.querySelector("#email")
-const razonSocial = document.querySelector("#razon")
-const fechaInicio = document.querySelector("#fecha")
+const precio = document.querySelector("#precio")
+const stock = document.querySelector("#stock")
+const fecha = document.querySelector("#fecha")
 const guardarBtn = document.querySelector("#guardar")
-const guardar = 'http://localhost:8080/cliente/guardar_cliente'
-const lista = 'http://localhost:8080/cliente/lista'
+const guardar = 'http://localhost:8080/producto/guardar_producto'
+const lista = 'http://localhost:8080/producto/lista'
 let resultados = ''
 const contenedor = document.querySelector("#data")
 
-//registro de clientes
-function registroCliente() { 
+//registro de productos
+function registroProducto() { 
     const data = {
-        es_empresa : empresa.value,
-        nombre : nombre.value,
-        apellido : apellido.value,
-        direccion : direccion.value,
-        email : email.value,
-        razon_social : razonSocial.value,
-        fechaInicio : fechaInicio.value
+        producto : nombre.value,
+        precio : precio.value,
+        fecha : fecha.value,
+        stock : stock.value,
     };
     const response = fetch(guardar, {
         method : 'POST',
@@ -34,10 +27,10 @@ function registroCliente() {
     })
     .then(res => res.json())
     .then(data => console.log(data))
-    alert("Usuario registrado")
+    alert("Producto registrado")
 }
 
-guardarBtn.addEventListener("click", registroCliente)
+guardarBtn.addEventListener("click", registroProducto)
 
 
 async function fetchDataFromDB(lista) {
@@ -50,10 +43,10 @@ async function fetchDataFromDB(lista) {
 
 function cargarBody(data) {
     for(let dataObject of data) {
-        console.log(dataObject)
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
         for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+
             const cellElement = document.createElement("td")
 
             cellElement.textContent = dataObjectArray[i][1];

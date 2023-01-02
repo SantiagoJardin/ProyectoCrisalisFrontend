@@ -10,7 +10,7 @@ function login() {
     xhr.onload = () => {
         console.log(xhr.status);
         if(xhr.status == 200) {
-            open("Home.html", "_self");
+            open("/home/santiago/Documentos/ProyectoCrisalis/Home/Home.html", "_self");
         }
         if(xhr.status == 500) {
             alert("No se pudo iniciar sesión.")

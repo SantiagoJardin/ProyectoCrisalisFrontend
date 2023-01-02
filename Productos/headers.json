@@ -1,0 +1,8 @@
+{
+    "headers": [
+        "Producto",
+        "Precio",
+        "Fecha",
+        "Cantidad"
+    ]
+}
