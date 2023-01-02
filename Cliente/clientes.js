@@ -1,43 +1,89 @@
 const tableBody = document.querySelector("#tbody")
 const tableHead = document.querySelector("#thead")
-const empresa = document.querySelector("#empresa")
-const nombre = document.querySelector("#nombre")
-const identificacion = document.querySelector("#identificacion")
-const apellido = document.querySelector("#apellido")
-const direccion = document.querySelector("#direccion")
-const email = document.querySelector("#email")
+const nombreE = document.querySelector("#nombreE")
+const identificacionE = document.querySelector("#identificacionE")
+const apellidoE = document.querySelector("#apellidoE")
+const direccionE = document.querySelector("#direccionE")
+const emailE = document.querySelector("#emailE")
+const nombreP = document.querySelector("#nombreP")
+const identificacionP = document.querySelector("#identificacionP")
+const apellidoP = document.querySelector("#apellidoP")
+const direccionP = document.querySelector("#direccionP")
+const emailP = document.querySelector("#emailP")
+
 const razonSocial = document.querySelector("#razon")
 const fechaInicio = document.querySelector("#fecha")
 const guardarBtn = document.querySelector("#guardar")
+const guardarBtnp = document.querySelector("#guardarP")
+
 const guardar = 'http://localhost:8080/cliente/guardar_cliente'
 const lista = 'http://localhost:8080/cliente/lista'
+const empresaBtn = document.querySelector("#modalEmpresa")
 let resultados = ''
 const contenedor = document.querySelector("#data")
+var empresa = false
 
 //registro de clientes
 function registroCliente() { 
-    const data = {
-        es_empresa : empresa.value,
-        nombre : nombre.value,
-        apellido : apellido.value,
-        direccion : direccion.value,
-        email : email.value,
-        razon_social : razonSocial.value,
-        fechaInicio : fechaInicio.value
-    };
-    const response = fetch(guardar, {
-        method : 'POST',
-        body : JSON.stringify(data),
-        headers : {
-            'Content-Type': 'application/json'
+    if (nombreInput.value != "" ||apellidoInput.value != "" || usuarioInput.value != "" || passwordInput.value != "") {
+        if (confirm("Confirmar registro?") == false) {
+            return
         }
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    alert("Usuario registrado")
+
+        if (empresa = true) {
+            const data = {
+                es_empresa : true,
+                nombre : nombreE.value,
+                apellido : apellidoE.value,
+                direccion : direccionE.value,
+                email : emailE.value,
+                razon_social : razonSocial.value,
+                fechaInicio : fechaInicio.value
+            };
+            const response = fetch(guardar, {
+                method : 'POST',
+                body : JSON.stringify(data),
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            alert("Usuario registrado")
+        } else {
+            const data = {
+                es_empresa : false,
+                nombre : nombreP.value,
+                apellido : apellidoP.value,
+                direccion : direccionP.value,
+                email : emailP.value,
+                razon_social : null,
+                fechaInicio : null
+            };
+            const response = fetch(guardar, {
+                method : 'POST',
+                body : JSON.stringify(data),
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            alert("Usuario registrado")
+        }
+
+        else {
+            alert ("Hay datos faltantes.")
+        }
+    
+    
+
+
 }
 
 guardarBtn.addEventListener("click", registroCliente)
+guardarBtnp.addEventListener("click", registroCliente)
+
 
 
 async function fetchDataFromDB(lista) {

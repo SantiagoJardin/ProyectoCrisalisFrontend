@@ -5,7 +5,7 @@ const passwordInput = document.querySelector("#password")
 const registroBtn = document.querySelector("#registrar-btn")
 
 function registro() {
-    if (nombreInput.value != "" ||apellidoInput.value != "" || usuarioInput.value != "" || passwordInput.value != "") {
+    if (nombreInput.value != "" && apellidoInput.value != "" && usuarioInput.value != "" && passwordInput.value != "") {
         if (confirm("Confirmar registro?") == false) {
             return
         }

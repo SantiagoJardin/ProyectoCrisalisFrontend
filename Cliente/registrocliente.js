@@ -1,1 +1,0 @@
-const esEmpresa = document.querySelector("")
