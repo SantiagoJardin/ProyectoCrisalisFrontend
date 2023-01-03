@@ -1,31 +1,38 @@
 const tableBody = document.querySelector("#tbody")
 const tableHead = document.querySelector("#thead")
+
+//variables empresa
 const nombreE = document.querySelector("#nombreE")
 const identificacionE = document.querySelector("#identificacionE")
 const apellidoE = document.querySelector("#apellidoE")
 const direccionE = document.querySelector("#direccionE")
 const emailE = document.querySelector("#emailE")
+const razonSocial = document.querySelector("#razon")
+const fechaInicio = document.querySelector("#fecha")
+
+//variables persona
 const nombreP = document.querySelector("#nombreP")
 const identificacionP = document.querySelector("#identificacionP")
 const apellidoP = document.querySelector("#apellidoP")
 const direccionP = document.querySelector("#direccionP")
 const emailP = document.querySelector("#emailP")
 
-const razonSocial = document.querySelector("#razon")
-const fechaInicio = document.querySelector("#fecha")
+//boton empresa o persona
 const guardarBtn = document.querySelector("#guardar")
 const guardarBtnp = document.querySelector("#guardarP")
+const empresaBtn = document.querySelector("#modalEmpresa")
 
+//links
 const guardar = 'http://localhost:8080/cliente/guardar_cliente'
 const lista = 'http://localhost:8080/cliente/lista'
-const empresaBtn = document.querySelector("#modalEmpresa")
+
 let resultados = ''
 const contenedor = document.querySelector("#data")
 var empresa = false
 
 //registro de clientes
 function registroCliente() { 
-    if (nombreInput.value != "" ||apellidoInput.value != "" || usuarioInput.value != "" || passwordInput.value != "") {
+    if (nombreE.value != "" && apellidoE.value != "" && identificacionE.value != "" && emailE.value != "" && direccionE.value != "" && razonSocial.value != "") {
         if (confirm("Confirmar registro?") == false) {
             return
         }
@@ -50,7 +57,7 @@ function registroCliente() {
             .then(res => res.json())
             .then(data => console.log(data))
             alert("Usuario registrado")
-        } else {
+        } else if (empresa = false) {
             const data = {
                 es_empresa : false,
                 nombre : nombreP.value,
@@ -70,16 +77,18 @@ function registroCliente() {
             .then(res => res.json())
             .then(data => console.log(data))
             alert("Usuario registrado")
-        }
-
-        else {
+    } else {
             alert ("Hay datos faltantes.")
         }
-    
-    
-
-
+    }
 }
+
+
+empresaBtn.addEventListener("click", () => {
+    empresa = true
+    console.log(empresa)
+})
+
 
 guardarBtn.addEventListener("click", registroCliente)
 guardarBtnp.addEventListener("click", registroCliente)
