@@ -9,6 +9,8 @@ const guardar = 'http://localhost:8080/producto/guardar_producto'
 const lista = 'http://localhost:8080/producto/lista'
 let resultados = ''
 const contenedor = document.querySelector("#data")
+const btnEditar = document.querySelector("#editar")
+const btnEliminar = document.querySelector("#eliminar")
 
 //registro de productos
 function registroProducto() { 
@@ -42,10 +44,11 @@ async function fetchDataFromDB(lista) {
 }
 
 function cargarBody(data) {
+    console.log(data)
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+        for(let i = 0; i < (dataObjectArray.length) - 0; i++) {
 
             const cellElement = document.createElement("td")
 

@@ -7,7 +7,7 @@ const identificacionE = document.querySelector("#identificacionE")
 const apellidoE = document.querySelector("#apellidoE")
 const direccionE = document.querySelector("#direccionE")
 const emailE = document.querySelector("#emailE")
-const razonSocial = document.querySelector("#razon")
+const razonSocial = document.querySelector("#razonE")
 const fechaInicio = document.querySelector("#fecha")
 
 //variables persona
@@ -31,20 +31,19 @@ const contenedor = document.querySelector("#data")
 var empresa = false
 
 //registro de clientes
-function registroCliente() { 
+function registroClienteEmpresa() { 
     if (nombreE.value != "" && apellidoE.value != "" && identificacionE.value != "" && emailE.value != "" && direccionE.value != "" && razonSocial.value != "") {
         if (confirm("Confirmar registro?") == false) {
             return
         }
-
-        if (empresa = true) {
             const data = {
                 es_empresa : true,
                 nombre : nombreE.value,
+                identificacion : identificacionE.value,
                 apellido : apellidoE.value,
                 direccion : direccionE.value,
                 email : emailE.value,
-                razon_social : razonSocial.value,
+                razonSocial : razonSocial.value,
                 fechaInicio : fechaInicio.value
             };
             const response = fetch(guardar, {
@@ -56,15 +55,23 @@ function registroCliente() {
             })
             .then(res => res.json())
             .then(data => console.log(data))
-            alert("Usuario registrado")
-        } else if (empresa = false) {
+            alert("Empresa registrada")
+    } 
+} 
+
+function registroClientePersona() { 
+    if (nombreP.value != "" && apellidoP.value != "" && identificacionP.value != "" && emailP.value != "" && direccionP.value != "") {
+        if (confirm("Confirmar registro?") == false) {
+            return
+        }
             const data = {
                 es_empresa : false,
                 nombre : nombreP.value,
+                identificacion : identificacionP.value,
                 apellido : apellidoP.value,
                 direccion : direccionP.value,
                 email : emailP.value,
-                razon_social : null,
+                razonSocial : null,
                 fechaInicio : null
             };
             const response = fetch(guardar, {
@@ -76,11 +83,8 @@ function registroCliente() {
             })
             .then(res => res.json())
             .then(data => console.log(data))
-            alert("Usuario registrado")
-    } else {
-            alert ("Hay datos faltantes.")
-        }
-    }
+            alert("Persona registrada")
+    } 
 }
 
 
@@ -88,10 +92,10 @@ empresaBtn.addEventListener("click", () => {
     empresa = true
     console.log(empresa)
 })
+console.log(empresa)
 
-
-guardarBtn.addEventListener("click", registroCliente)
-guardarBtnp.addEventListener("click", registroCliente)
+guardarBtn.addEventListener("click", registroClienteEmpresa)
+guardarBtnp.addEventListener("click", registroClientePersona)
 
 
 
@@ -104,11 +108,11 @@ async function fetchDataFromDB(lista) {
 }
 
 function cargarBody(data) {
+    console.log(data)
     for(let dataObject of data) {
-        console.log(dataObject)
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+        for(let i = 0; i < (dataObjectArray.length) - 0; i++) {
             const cellElement = document.createElement("td")
 
             cellElement.textContent = dataObjectArray[i][1];
