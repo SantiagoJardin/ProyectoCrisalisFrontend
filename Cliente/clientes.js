@@ -16,13 +16,15 @@ const nombrePersona = document.querySelector("#nombre-persona");
 const apellidoPersona = document.querySelector("#apellido-persona");
 const direccionPersona = document.querySelector("#direccion-persona");
 const emailPersona = document.querySelector("#email-persona");
-const cuitEmpresa = document.querySelector("#cuit-empresa");
+const identificacionEmpresa = document.querySelector("#cuit-empresa");
 const razonSocialEmpresa = document.querySelector("#razon-social-empresa");
-const fechaInicioEmpresa = document.querySelector("#date-empresa");
+const fechaInicioEmpresa = document.querySelector("#fecha-empresa");
 const nombreEmpresa = document.querySelector("#nombre-empresa");
 const apellidoEmpresa = document.querySelector("#apellido-empresa");
 const direccionEmpresa = document.querySelector("#direccion-empresa");
 const emailEmpresa = document.querySelector("#email-empresa");
+const identificacionPersona = document.querySelector("#identificacion-persona");
+
 //variables empresa
 const nombreE = document.querySelector("#nombreE")
 const identificacionE = document.querySelector("#identificacionE")
@@ -47,7 +49,7 @@ const empresaBtn = document.querySelector("#modalEmpresa")
 //links
 const guardar = 'http://localhost:8080/cliente/guardar_cliente'
 const lista = 'http://localhost:8080/cliente/lista'
-const actualizar = `http://localhost:8080/cliente/actualizar`; // FALTA AGREGAR PARAMETROS
+ 
 
 let resultados = ''
 const contenedor = document.querySelector("#data")
@@ -135,6 +137,7 @@ async function fetchDataFromDB(lista) {
     return data;
 }
 
+
 function cargarBody(data) {
     console.log(data)
     for(let dataObject of data) {
@@ -154,12 +157,13 @@ function cargarBody(data) {
                 centerPanelPersona.style.display = "flex";
                 nombrePersona.value = dataObjectArray[1][1];
                 apellidoPersona.value = dataObjectArray[3][1];
+                identificacionPersona.value = dataObjectArray[2][1];
                 direccionPersona.value = dataObjectArray[4][1];
                 emailPersona.value = dataObjectArray[5][1];
 
             } else {
                 centerPanelEmpresa.style.display = "flex";
-                cuitEmpresa.value = dataObjectArray[2][1];
+                identificacionEmpresa.value = dataObjectArray[2][1];
                 razonSocialEmpresa.value = dataObjectArray[6][1];
                 fechaInicioEmpresa.value = dataObjectArray[7][1];
                 nombreEmpresa.value = dataObjectArray[1][1];
@@ -187,6 +191,7 @@ function cargarBody(data) {
 
         tableBody.appendChild(rowElement);
     }
+
     for (let i = 1, row; row = table.rows[i]; i++) {
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -202,7 +207,7 @@ function cargarBody(data) {
         }
         
     }
-}centerPanelEmpresa
+}
 
 async function refreshTable(urlHeaders, urlBody) {
     // Headers
@@ -218,7 +223,9 @@ async function refreshTable(urlHeaders, urlBody) {
 
         headerElement.textContent = headerText;
         tableHead.querySelector("tr").appendChild(headerElement); 
-    }    centerPanelEmpresa.style.display = "none";
+    }    
+    
+    centerPanelEmpresa.style.display = "none";
     centerPanelPersona.style.display = "none";
 
     // Body
@@ -243,10 +250,29 @@ cerrarEdicionEmpresa.addEventListener("click", () => {
 })
 
 guardarEdicionPersona.addEventListener("click", () => {
+   let link = `http://localhost:8080/cliente/actualizar?esEmpresa=false&nombre=${nombrePersona.value}&identificacion=${identificacionPersona.value}&apellido=${apellidoPersona.value}&direccion=${direccionPersona.value}&email=${emailPersona.value}&razonSocial=&fechaInicio=`
+   fetch(link, {
+    method: "POST"
+   })
+    centerPanelContainer.style.display = "none";
+    centerPanelEmpresa.style.display = "none";
+    centerPanelPersona.style.display = "none";
+    refreshTable("./headers.json", lista)
 
 })
 
 guardarEdicionEmpresa.addEventListener("click", () => {
-    
+    console.log(fechaInicioEmpresa.value)
+    let link = `http://localhost:8080/cliente/actualizar?esEmpresa=true&nombre=${nombreEmpresa.value}&identificacion=${identificacionEmpresa.value}&apellido=${apellidoEmpresa.value}&direccion=${direccionEmpresa.value}&email=${emailEmpresa.value}&razonSocial=${razonSocialEmpresa.value}&fechaInicio=${fechaInicioEmpresa.value}`
+    console.log(identificacionEmpresa.value)
+    fetch(link, {
+    method: "POST"
+   })
+    centerPanelContainer.style.display = "none";
+    centerPanelEmpresa.style.display = "none";
+    centerPanelPersona.style.display = "none";
+    refreshTable("./headers.json", lista)
 })
+
+
 
