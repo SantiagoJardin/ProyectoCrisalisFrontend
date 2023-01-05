@@ -95,3 +95,9 @@ body{
     background: #cccccc;
 }
 
+.centerpanel-empresa {
+    display: none;
+}
+.centerpanel-persona {
+    display: none;
+}

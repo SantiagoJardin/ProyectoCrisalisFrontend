@@ -1,6 +1,28 @@
+let editar;
+let borrar;
+
+const centerPanelContainer = document.querySelector("#centerpanel-container");
+const centerPanelPersona = document.querySelector("#centerpanel-persona");
+const centerPanelEmpresa = document.querySelector("#centerpanel-empresas");
+const guardarEdicionPersona = document.querySelector("#guardar-edicion-persona");
+const cerrarEdicionPersona = document.querySelector("#cerrar-edicion-persona");
+const guardarEdicionEmpresa = document.querySelector("#guardar-edicion-empresa");
+const cerrarEdicionEmpresa = document.querySelector("#cerrar-edicion-empresa");
+
 const tableBody = document.querySelector("#tbody")
 const tableHead = document.querySelector("#thead")
 
+const nombrePersona = document.querySelector("#nombre-persona");
+const apellidoPersona = document.querySelector("#apellido-persona");
+const direccionPersona = document.querySelector("#direccion-persona");
+const emailPersona = document.querySelector("#email-persona");
+const cuitEmpresa = document.querySelector("#cuit-empresa");
+const razonSocialEmpresa = document.querySelector("#razon-social-empresa");
+const fechaInicioEmpresa = document.querySelector("#date-empresa");
+const nombreEmpresa = document.querySelector("#nombre-empresa");
+const apellidoEmpresa = document.querySelector("#apellido-empresa");
+const direccionEmpresa = document.querySelector("#direccion-empresa");
+const emailEmpresa = document.querySelector("#email-empresa");
 //variables empresa
 const nombreE = document.querySelector("#nombreE")
 const identificacionE = document.querySelector("#identificacionE")
@@ -25,10 +47,13 @@ const empresaBtn = document.querySelector("#modalEmpresa")
 //links
 const guardar = 'http://localhost:8080/cliente/guardar_cliente'
 const lista = 'http://localhost:8080/cliente/lista'
+const actualizar = `http://localhost:8080/cliente/actualizar`; // FALTA AGREGAR PARAMETROS
 
 let resultados = ''
 const contenedor = document.querySelector("#data")
 var empresa = false
+const btnEditar = document.querySelector("#editar")
+const btnEliminar = document.querySelector("#eliminar")
 
 //registro de clientes
 function registroClienteEmpresa() { 
@@ -50,7 +75,7 @@ function registroClienteEmpresa() {
                 method : 'POST',
                 body : JSON.stringify(data),
                 headers : {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'applicaonsole.logtion/json'
                 }
             })
             .then(res => res.json())
@@ -87,6 +112,9 @@ function registroClientePersona() {
     } 
 }
 
+function actualizacionPersona() {
+
+}
 
 empresaBtn.addEventListener("click", () => {
     empresa = true
@@ -112,15 +140,69 @@ function cargarBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 0; i++) {
+        for(let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td")
-
             cellElement.textContent = dataObjectArray[i][1];
             rowElement.appendChild(cellElement);
         }
+        editar = document.createElement("button");
+        borrar = document.createElement("button");
+
+        editar.addEventListener("click", () => {
+            centerPanelContainer.style.display = "flex";
+            if(dataObjectArray[0][1] == false) {
+                centerPanelPersona.style.display = "flex";
+                nombrePersona.value = dataObjectArray[1][1];
+                apellidoPersona.value = dataObjectArray[3][1];
+                direccionPersona.value = dataObjectArray[4][1];
+                emailPersona.value = dataObjectArray[5][1];
+
+            } else {
+                centerPanelEmpresa.style.display = "flex";
+                cuitEmpresa.value = dataObjectArray[2][1];
+                razonSocialEmpresa.value = dataObjectArray[6][1];
+                fechaInicioEmpresa.value = dataObjectArray[7][1];
+                nombreEmpresa.value = dataObjectArray[1][1];
+                apellidoEmpresa.value = dataObjectArray[3][1];
+                direccionEmpresa.value = dataObjectArray[4][1];
+                emailEmpresa.value = dataObjectArray[5][1];
+            }
+        })
+
+        borrar.addEventListener("click", () => {
+            alert(dataObjectArray[2][1])
+        })
+
+        let td = document.createElement("td");
+        editar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/boton-editar.png"/>'
+        editar.className = "btn";
+        borrar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/basura.png"/>'
+        borrar.className = "btn";
+        td.append(editar)
+        td.append(borrar)
+        rowElement.appendChild(td)
+        
+        
+
+
         tableBody.appendChild(rowElement);
     }
-}
+    for (let i = 1, row; row = table.rows[i]; i++) {
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (let j = 0, col; col = row.cells[j]; j++) {
+          //iterate through columnsplaceholder="Nombre"
+          //columns would be accessed using the "col" variable assigned in the for loop
+          if(col.innerHTML == "false") {
+            col.innerHTML = "No";
+          } else if (col.innerHTML == "true") {
+            col.innerHTML = "Sí";
+          } else if (col.innerHTML == "") {
+            col.innerHTML = "-";
+          }
+        }
+        
+    }
+}centerPanelEmpresa
 
 async function refreshTable(urlHeaders, urlBody) {
     // Headers
@@ -136,7 +218,8 @@ async function refreshTable(urlHeaders, urlBody) {
 
         headerElement.textContent = headerText;
         tableHead.querySelector("tr").appendChild(headerElement); 
-    }
+    }    centerPanelEmpresa.style.display = "none";
+    centerPanelPersona.style.display = "none";
 
     // Body
     tableBody.innerHTML = "";
@@ -146,3 +229,24 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 refreshTable("./headers.json", lista)
+
+cerrarEdicionPersona.addEventListener("click", () => {
+    centerPanelContainer.style.display = "none";
+    centerPanelEmpresa.style.display = "none";
+    centerPanelPersona.style.display = "none";
+})
+
+cerrarEdicionEmpresa.addEventListener("click", () => {
+    centerPanelEmpresa.style.display = "none";
+    centerPanelPersona.style.display = "none";
+    centerPanelContainer.style.display = "none";
+})
+
+guardarEdicionPersona.addEventListener("click", () => {
+
+})
+
+guardarEdicionEmpresa.addEventListener("click", () => {
+    
+})
+

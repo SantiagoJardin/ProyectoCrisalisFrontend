@@ -64,7 +64,6 @@ body {
     padding: 10px 15px;
     cursor: pointer;
     font-size: 20px;
-<<<<<<< HEAD:Cliente/main.css
     border-radius: 5px;   
 }
 
@@ -73,30 +72,31 @@ body {
 }
 
 .menu button a{
-=======
     border-radius: 5px;
 }
 
 form button a{
->>>>>>> master:main.css
     text-decoration: none;
     color: #fff;
 }
 
-<<<<<<< HEAD:Cliente/main.css
 .menu button:hover {
     background: #252525;
 }
 
-.menu img {
-=======
+
 form button:hover {
     background: #252525;
 }
 
 form img {
->>>>>>> master:main.css
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
+.centerpanel-empresa {
+    display: none;
+}
+.centerpanel-persona {
+    display: none;
+}

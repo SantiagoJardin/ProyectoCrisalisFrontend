@@ -61,7 +61,7 @@ body{
 }
 
 .producto-tabla {
-    text-align: left;
+    text-align: center;
     max-width: 1300px;
     width: 100%;
     margin: auto;
@@ -69,6 +69,7 @@ body{
     margin-top: 1%;
     border-radius: 5px;
     background-color: azure;
+    
     
 }
 
@@ -127,4 +128,72 @@ div.nuevo-usuario{
 
 .btn.btn-outline-primary {
     margin-bottom: 15px;
+}
+
+.centerpanel-empresas {
+    display: none;
+    flex-direction: column;
+    width: 400px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    background-color: azure;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.centerpanel-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    display: none;
+}
+
+.centerpanel-persona {
+    display: none;
+    flex-direction: column;
+    width: 400px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    background-color: azure;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.titulo-popup {
+    text-align: center;
+    margin: 10px;
+
+}
+
+.input-atributo  {
+    margin: 10px;
+
+}
+
+.botones-popup {
+    size: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.boton-popup {
+    margin: 5px;
+    border: none;
+    background-color: rgb(100, 140, 250);
+    color: azure;
+    border-radius: 5px;
+    font-size: large;
+}
+
+.boton-popup:hover {
+    background-color: rgb(21, 83, 255);
 }
