@@ -171,10 +171,12 @@ function cargarBody(data) {
         })
 
         borrar.addEventListener("click", () => {
-            let linkBorrar = `localhost:8080/cliente/borrar?id=${id.value}`
-            fetch(linkBorrar, {
+            let dni = dataObjectArray[2][1];
+            let linkBorrar = `http://localhost:8080/cliente/borrar?identificacion=${dni}`
+            let response = fetch(linkBorrar, {
                 method: "POST"
                })
+               console.log(response.status)
             refreshTable("./headers.json", lista)
         })
 
@@ -256,7 +258,6 @@ guardarEdicionPersona.addEventListener("click", () => {
 })
 
 guardarEdicionEmpresa.addEventListener("click", () => {
-    console.log(fechaInicioEmpresa.value)
     let link = `http://localhost:8080/cliente/actualizar?esEmpresa=true&nombre=${nombreEmpresa.value}&identificacion=${identificacionEmpresa.value}&apellido=${apellidoEmpresa.value}&direccion=${direccionEmpresa.value}&email=${emailEmpresa.value}&razonSocial=${razonSocialEmpresa.value}&fechaInicio=${fechaInicioEmpresa.value}`
     console.log(identificacionEmpresa.value)
     fetch(link, {
