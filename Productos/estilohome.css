@@ -96,7 +96,7 @@ body{
 }
 
 .centerpanel-producto {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 400px;
     position: absolute;

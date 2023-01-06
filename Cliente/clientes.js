@@ -51,7 +51,7 @@ const guardar = 'http://localhost:8080/cliente/guardar_cliente'
 const lista = 'http://localhost:8080/cliente/lista'
  
 
-let resultados = ''
+
 const contenedor = document.querySelector("#data")
 var empresa = false
 const btnEditar = document.querySelector("#editar")
@@ -73,11 +73,12 @@ function registroClienteEmpresa() {
                 razonSocial : razonSocial.value,
                 fechaInicio : fechaInicio.value
             };
+            console.log(fechaInicio.value)
             const response = fetch(guardar, {
                 method : 'POST',
                 body : JSON.stringify(data),
                 headers : {
-                    'Content-Type': 'applicaonsole.logtion/json'
+                    'Content-Type': 'application/json'
                 }
             })
             .then(res => res.json())
@@ -114,15 +115,11 @@ function registroClientePersona() {
     } 
 }
 
-function actualizacionPersona() {
-
-}
 
 empresaBtn.addEventListener("click", () => {
     empresa = true
-    console.log(empresa)
 })
-console.log(empresa)
+
 
 guardarBtn.addEventListener("click", registroClienteEmpresa)
 guardarBtnp.addEventListener("click", registroClientePersona)
@@ -173,13 +170,13 @@ function cargarBody(data) {
             }
         })
 
-        //borrar.addEventListener("click", () => {
-            //let linkBorrar = `localhost:8080/cliente/borrar?id=${id.value.value}`
-            //fetch(linkBorrar, {
-             //   method: "POST"
-               //})
-           // refreshTable("./headers.json", lista)
-        //})
+        borrar.addEventListener("click", () => {
+            let linkBorrar = `localhost:8080/cliente/borrar?id=${id.value}`
+            fetch(linkBorrar, {
+                method: "POST"
+               })
+            refreshTable("./headers.json", lista)
+        })
 
         let td = document.createElement("td");
         editar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/boton-editar.png"/>'
