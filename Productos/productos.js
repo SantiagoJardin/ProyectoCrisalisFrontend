@@ -12,6 +12,18 @@ const contenedor = document.querySelector("#data")
 const btnEditar = document.querySelector("#editar")
 const btnEliminar = document.querySelector("#eliminar")
 
+const nombreProducto = document.querySelector("#nombre-producto");
+const precioProducto = document.querySelector("#precio-producto");
+const fechaProducto = document.querySelector("#fecha-producto");
+const cantidadProducto = document.querySelector("#cantidad-producto");
+const centerPanelContainer = document.querySelector("#centerpanel-container");
+const centerPanelProducto = document.querySelector("#centerpanel-producto");
+const guardarEdicionProducto = document.querySelector("#guardar-edicion-producto");
+const cerrarEdicionProducto = document.querySelector("#cerrar-edicion-producto");
+
+
+
+
 //registro de productos
 function registroProducto() { 
     const data = {
@@ -55,7 +67,31 @@ function cargarBody(data) {
             cellElement.textContent = dataObjectArray[i][1];
             rowElement.appendChild(cellElement);
         }
+        editar = document.createElement("button");
+        borrar = document.createElement("button");
+
+        editar.addEventListener("click", () => {
+            centerPanelContainer.style.display = "flex";
+            if(dataObjectArray[0][1] == false) {
+                centerPanelProducto.style.display = "flex";
+                nombreProducto.value = dataObjectArray[1][1];
+                precioProducto.value = dataObjectArray[3][1];
+                fechaProducto.value = dataObjectArray[2][1];
+                cantidadProducto.value = dataObjectArray[4][1];
+
+            }
+        })
+
+        let td = document.createElement("td");
+        editar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/boton-editar.png"/>'
+        editar.className = "btn";
+        borrar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/basura.png"/>'
+        borrar.className = "btn";
+        td.append(editar)
+        td.append(borrar)
+        rowElement.appendChild(td)
         tableBody.appendChild(rowElement);
+
     }
 }
 
@@ -75,6 +111,8 @@ async function refreshTable(urlHeaders, urlBody) {
         tableHead.querySelector("tr").appendChild(headerElement); 
     }
 
+    centerPanelProducto.style.display = "none";
+
     // Body
     tableBody.innerHTML = "";
     fetchDataFromDB(urlBody).then(data => {
@@ -83,3 +121,19 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 refreshTable("./headers.json", lista)
+
+cerrarEdicionProducto.addEventListener("click", () => {
+    centerPanelContainer.style.display = "none";
+    centerPanelProducto.style.display = "none";
+})
+
+guardarEdicionProducto.addEventListener("click", () => {
+    let link = `http://localhost:8080/producto/actualizar?esEmpresa=false&nombre=${nombrePersona.value}&identificacion=${identificacionPersona.value}&apellido=${apellidoPersona.value}&direccion=${direccionPersona.value}&email=${emailPersona.value}&razonSocial=&fechaInicio=`
+    fetch(link, {
+     method: "POST"
+    })
+     centerPanelContainer.style.display = "none";
+     centerPanelProducto.style.display = "none";
+     refreshTable("./headers.json", lista)
+ 
+ })

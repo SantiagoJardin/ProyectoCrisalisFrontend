@@ -25,10 +25,25 @@
             <li><a href="/home/santiago/Documentos/ProyectoCrisalis/Cliente/Clientes.html">Clientes</a></li>
         </ul>
     </header>
+    <div class="centerpanel-container" id="centerpanel-container">
+        <div class="centerpanel-producto" id="centerpanel-producto">
+            <h3 class="titulo-popup">Editar producto</h3>
+            <input id="nombre-producto" class="input-atributo" placeholder="Producto" type="text" required>
+            <input id="precio-producto" class="input-atributo" placeholder="Precio" type="text" required>
+            <input id="fecha-producto" class="input-atributo" type="date" required>
+            <input id="cantidad-producto" class="input-atributo" placeholder="Direccion" type="text" required>
+            <div class="botones-popup">
+                <button class="boton-popup" id="guardar-edicion-producto">Guardar</button>
+                <button class="boton-popup" id="cerrar-edicion-producto">Cerrar</button>
+            </div> 
+        </div>
+    </div>
+
+
     <div class="barra-bs">
         <h2>Productos</h2>
         <label for="">
-            <input placeholder="Buscar cliente" type="text">
+            <input placeholder="Buscar producto" type="text">
         </label>
         <button id="btnCrear" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalArticulo"><img class="img-btn" src="/home/santiago/Documentos/ProyectoCrisalis/img/add.png" alt="agregar"></button>
     </div>
@@ -41,7 +56,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear cliente</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Crear producto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

@@ -173,9 +173,13 @@ function cargarBody(data) {
             }
         })
 
-        borrar.addEventListener("click", () => {
-            alert(dataObjectArray[2][1])
-        })
+        //borrar.addEventListener("click", () => {
+            //let linkBorrar = `localhost:8080/cliente/borrar?id=${id.value.value}`
+            //fetch(linkBorrar, {
+             //   method: "POST"
+               //})
+           // refreshTable("./headers.json", lista)
+        //})
 
         let td = document.createElement("td");
         editar.innerHTML = '<img src="/home/santiago/Documentos/ProyectoCrisalis/img/boton-editar.png"/>'
@@ -185,18 +189,11 @@ function cargarBody(data) {
         td.append(editar)
         td.append(borrar)
         rowElement.appendChild(td)
-        
-        
-
-
         tableBody.appendChild(rowElement);
     }
 
     for (let i = 1, row; row = table.rows[i]; i++) {
-        //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columnsplaceholder="Nombre"
-          //columns would be accessed using the "col" variable assigned in the for loop
           if(col.innerHTML == "false") {
             col.innerHTML = "No";
           } else if (col.innerHTML == "true") {

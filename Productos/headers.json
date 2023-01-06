@@ -3,6 +3,7 @@
         "Producto",
         "Precio",
         "Fecha",
-        "Cantidad"
+        "Cantidad",
+        "Acciones"
     ]
 }
