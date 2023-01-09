@@ -72,14 +72,22 @@ function cargarBody(data) {
 
         editar.addEventListener("click", () => {
             centerPanelContainer.style.display = "flex";
-            if(dataObjectArray[0][1] == false) {
-                centerPanelProducto.style.display = "flex";
-                nombreProducto.value = dataObjectArray[1][1];
-                precioProducto.value = dataObjectArray[3][1];
-                fechaProducto.value = dataObjectArray[2][1];
-                cantidadProducto.value = dataObjectArray[4][1];
+            centerPanelProducto.style.display = "flex";
+            nombreProducto.value = dataObjectArray[1][1];
+            precioProducto.value = dataObjectArray[2][1];
+            fechaProducto.value = dataObjectArray[3][1];
+            cantidadProducto.value = dataObjectArray[4][1];
 
-            }
+        })
+
+        borrar.addEventListener("click", () => {
+            let producto = dataObjectArray[0][1];
+            let linkBorrar = `http://localhost:8080/producto/borrar?producto=${producto}`
+            let response = fetch(linkBorrar, {
+                method: "POST"
+               })
+               console.log(response.status)
+            refreshTable("./headers.json", lista)
         })
 
         let td = document.createElement("td");
@@ -128,7 +136,7 @@ cerrarEdicionProducto.addEventListener("click", () => {
 })
 
 guardarEdicionProducto.addEventListener("click", () => {
-    let link = `http://localhost:8080/producto/actualizar?esEmpresa=false&nombre=${nombrePersona.value}&identificacion=${identificacionPersona.value}&apellido=${apellidoPersona.value}&direccion=${direccionPersona.value}&email=${emailPersona.value}&razonSocial=&fechaInicio=`
+    let link = `http://localhost:8080/producto/actualizar?producto=${nombreProducto.value}&precio=${precioProducto.value}&fecha=${fechaProducto.value}&stock=${cantidadProducto.value}`
     fetch(link, {
      method: "POST"
     })
