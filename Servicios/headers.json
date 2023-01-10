@@ -1,0 +1,8 @@
+{
+    "headers": [
+        "Id",
+        "Impuesto",
+        "Porcentaje",
+        "Acciones"
+    ]
+}
