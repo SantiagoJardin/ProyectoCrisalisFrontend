@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +13,7 @@
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
 
-    <title>Productos</title>
-</head>
+    <title>Impuestos</title>
 <body>
     <header>
         <ul class="menu">
@@ -29,23 +27,20 @@
     </header>
     <div class="centerpanel-container" id="centerpanel-container">
         <div class="centerpanel-producto" id="centerpanel-producto">
-            <h3 class="titulo-popup">Editar producto</h3>
-            <input id="nombre-producto" class="input-atributo" placeholder="Producto" type="text" required>
-            <input id="precio-producto" class="input-atributo" placeholder="Precio" type="text" required>
-            <input id="fecha-producto" class="input-atributo" type="date" required>
-            <input id="cantidad-producto" class="input-atributo" placeholder="Cantidad" type="text" required>
+            <h3 class="titulo-popup">Editar impuesto</h3>
+            <input id="nombre-impuesto" class="input-atributo" placeholder="impuesto" type="text" required>
+            <input id="porcentaje-impuesto" class="input-atributo" placeholder="Porcentaje" type="text" required>
             <div class="botones-popup">
-                <button class="boton-popup" id="guardar-edicion-producto">Guardar</button>
-                <button class="boton-popup" id="cerrar-edicion-producto">Cerrar</button>
+                <button class="boton-popup" id="guardar-edicion-impuesto">Guardar</button>
+                <button class="boton-popup" id="cerrar-edicion-impuesto">Cerrar</button>
             </div> 
         </div>
     </div>
 
-
     <div class="barra-bs">
-        <h2>Productos</h2>
+        <h2>Impuestos</h2>
         <label for="">
-            <input placeholder="Buscar producto" type="text">
+            <input placeholder="Buscar impuesto" type="text">
         </label>
         <button id="btnCrear" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalArticulo"><img class="img-btn" src="/home/santiago/Documentos/ProyectoCrisalis/img/add.png" alt="agregar"></button>
     </div>
@@ -58,26 +53,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear producto</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Crear impuesto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="col-form-label">Nombe del producto:</label>
-                            <input id="nombre" type="text" class="form-control" autofocus required>
+                            <label for="impuesto" class="col-form-label">Nombre del impuesto:</label>
+                            <input id="impuesto" type="text" class="form-control" autofocus required>
                         </div>
                         <div class="mb-3">
-                            <label for="Precio" class="col-form-label">Precio:</label>
-                            <input id="precio" type="text" class="form-control" autofocus required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fecha" class="col-form-label">Fecha:</label>
-                            <input id="fecha" type="date" class="form-control" autofocus required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="stock" class="col-form-label">Cantidad de stock:</label>
-                            <input id="stock" type="text" class="form-control" autofocus required> 
+                            <label for="Porcentaje" class="col-form-label">Porcentaje:</label>
+                            <input id="Porcentaje" type="text" class="form-control" autofocus required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -89,14 +76,7 @@
     </div>
 
 
-        <!-- 
-            <button id="borrar" class="btn"><img class="img-btn" src="/home/santiago/Documentos/ProyectoCrisalis/img/basura.png" alt="borrar"></button>
-            <button id="editar" class="btn"><img class="img-btn" src="/home/santiago/Documentos/ProyectoCrisalis/img/boton-editar.png" alt="editar"></button>
-        --> 
-        
-        
-        
-    <script src="productos.js"></script>
+    <script src="impuestos.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -104,6 +84,6 @@
     <!-- JavaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-    
+
 </body>
 </html>

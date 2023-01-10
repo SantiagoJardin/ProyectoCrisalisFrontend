@@ -1,36 +1,31 @@
 const tableBody = document.querySelector("#tbody")
 const tableHead = document.querySelector("#thead")
-const nombre = document.querySelector("#nombre")
-const precio = document.querySelector("#precio")
-const stock = document.querySelector("#stock")
-const fecha = document.querySelector("#fecha")
+const nombre = document.querySelector("#impuesto")
+const precio = document.querySelector("#porcentaje")
 const guardarBtn = document.querySelector("#guardar")
-const guardar = 'http://localhost:8080/producto/guardar_producto'
-const lista = 'http://localhost:8080/producto/lista'
+const guardar = 'http://localhost:8080/impuesto/guardar_impuesto'
+const lista = 'http://localhost:8080/impuesto/lista'
 let resultados = ''
 const contenedor = document.querySelector("#data")
 const btnEditar = document.querySelector("#editar")
 const btnEliminar = document.querySelector("#eliminar")
 
-const nombreProducto = document.querySelector("#nombre-producto");
-const precioProducto = document.querySelector("#precio-producto");
-const fechaProducto = document.querySelector("#fecha-producto");
-const cantidadProducto = document.querySelector("#cantidad-producto");
+const nombreImpuesto = document.querySelector("#nombre-impuesto");
+const porcentajeImpuesto = document.querySelector("#porcentaje-impuesto");
+
 const centerPanelContainer = document.querySelector("#centerpanel-container");
-const centerPanelProducto = document.querySelector("#centerpanel-producto");
-const guardarEdicionProducto = document.querySelector("#guardar-edicion-producto");
-const cerrarEdicionProducto = document.querySelector("#cerrar-edicion-producto");
+const centerPanelImpuesto = document.querySelector("#centerpanel-impuesto");
+const guardarEdicionImpuesto = document.querySelector("#guardar-edicion-impuesto");
+const cerrarEdicionImpuesto = document.querySelector("#cerrar-edicion-impuesto");
 
 
 
 
 //registro de productos
-function registroProducto() { 
+function registroImpuesto() { 
     const data = {
-        producto : nombre.value,
-        precio : precio.value,
-        fecha : fecha.value,
-        stock : stock.value,
+        impuesto : impuesto.value,
+        porcentaje : porcentaje.value,
     };
     const response = fetch(guardar, {
         method : 'POST',
@@ -41,10 +36,10 @@ function registroProducto() {
     })
     .then(res => res.json())
     .then(data => console.log(data))
-    alert("Producto registrado")
+    alert("Impuesto registrado")
 }
 
-guardarBtn.addEventListener("click", registroProducto)
+guardarBtn.addEventListener("click", registroImpuesto)
 
 
 async function fetchDataFromDB(lista) {
@@ -73,10 +68,9 @@ function cargarBody(data) {
         editar.addEventListener("click", () => {
             centerPanelContainer.style.display = "flex";
             centerPanelProducto.style.display = "flex";
-            nombreProducto.value = dataObjectArray[1][1];
-            precioProducto.value = dataObjectArray[2][1];
-            fechaProducto.value = dataObjectArray[3][1];
-            cantidadProducto.value = dataObjectArray[4][1];
+            nombreImpuesto.value = dataObjectArray[1][1];
+            porcentajeImpuesto.value = dataObjectArray[2][1];
+           
 
         })
 
@@ -120,7 +114,7 @@ async function refreshTable(urlHeaders, urlBody) {
         tableHead.querySelector("tr").appendChild(headerElement); 
     }
 
-    centerPanelProducto.style.display = "none";
+    centerPanelImpuesto.style.display = "none";
 
     // Body
     tableBody.innerHTML = "";
@@ -131,18 +125,18 @@ async function refreshTable(urlHeaders, urlBody) {
 
 refreshTable("./headers.json", lista)
 
-cerrarEdicionProducto.addEventListener("click", () => {
+cerrarEdicionImpuesto.addEventListener("click", () => {
     centerPanelContainer.style.display = "none";
-    centerPanelProducto.style.display = "none";
+    centerPanelImpuesto.style.display = "none";
 })
 
-guardarEdicionProducto.addEventListener("click", () => {
-    let link = `http://localhost:8080/producto/actualizar?producto=${nombreProducto.value}&precio=${precioProducto.value}&fecha=${fechaProducto.value}&stock=${cantidadProducto.value}`
+guardarEdicionImpuesto.addEventListener("click", () => {
+    let link = `http://localhost:8080/impuesto/actualizar?impuesto=${nombreImpuesto.value}&porcentaje=${porcentajeImpuesto.value}`
     fetch(link, {
      method: "POST"
     })
      centerPanelContainer.style.display = "none";
-     centerPanelProducto.style.display = "none";
+     centerPanelImpuesto.style.display = "none";
      refreshTable("./headers.json", lista)
  
  })
